@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     protected $primaryKey = 'isbn';
-    protected $fillable = ['name', 'publishedAt', 'authorId', 'publisherId'];
+    protected $fillable = ['isbn', 'name', 'publishedAt', 'authorId', 'publisherId'];
     
     public $incrementing = false;
+    protected $keyType = 'string';
 
     public function author()
     {
@@ -21,5 +22,3 @@ class Book extends Model
         return $this->belongsTo(Publisher::class, 'publisherId', 'publisherId');
     }
 }
-
-

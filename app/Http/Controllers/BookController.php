@@ -26,8 +26,16 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        //書籍作成
-        $book = Book::create($request->all());
+        // 書籍作成
+        $data = [
+            'isbn' => $request->input('isbn'),
+            'name' => $request->input('name'),
+            'publishedAt' => $request->input('publishedAt'),
+            'authorId' => $request->input('authorId'),
+            'publisherId' => $request->input('publisherId'),
+        ];
+
+        $book = Book::create($data);
 
         return response()->json($book, 201);
     }
