@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->string('isbn')->primary();
+            $table->string('isbn')->primary()->default(''); // デフォルト値を設定
             $table->string('name');
             $table->timestamp('publishedAt');
             $table->foreignId('authorId')->constrained('authors', 'authorId');
